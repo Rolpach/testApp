@@ -105,111 +105,124 @@ class TaskList extends StatelessWidget{
 
 //Modal Crear Tarea
 void _showCustomModal(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return Dialog(
-          child: Form(
-            child:Padding(padding: const EdgeInsets.all(20.0) ,
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: 400,
-                      padding: EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          border: Border.all(color: Colors.black)
-
-                      ),
-                      child: TextFormField(
-                        validator: (value){
-                          if(value == null || value.isEmpty){
-                            return 'Required Field';
-                          }
-                          return null;
-                        },
-                        style: TextStyle(color: Colors.black),
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Ingresa nombre de la tarea',
-                          hintStyle: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 25),
-                    Container(
-                      width: 400,
-                      padding: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          border: Border.all(color: Colors.black)
-                      ),
-                      child: TextFormField(
-                        maxLines: 5,
-                        validator: (value){
-                          if(value == null || value.isEmpty){
-                            return 'Required Field';
-                          }
-                          return null;
-                        },
-                        style: TextStyle(color: Colors.black),
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Ingresa la descripcion de la tarea',
-                          hintStyle: TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 25),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+  showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: '',
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation) {
+        return Center(
+          child: Dialog(
+              child: Form(
+                child:Padding(padding: const EdgeInsets.all(20.0) ,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        GestureDetector(
-                          onTap: (){
-                            Navigator.of(context).pop();
-                          },
-                          child:   Container(
-                              color: Colors.red,
-                              width:100,
-                              height: 35,
-                              child: Center(
-                                child: StreamBuilder<Object>(
-                                    stream: null,
-                                    builder: (context, snapshot) {
-                                      return Text('Cerrar', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),);
-                                    }
-                                ),
-                              )
+                        Container(
+                          width: 400,
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(color: Colors.black)
+
+                          ),
+                          child: TextFormField(
+                            validator: (value){
+                              if(value == null || value.isEmpty){
+                                return 'Required Field';
+                              }
+                              return null;
+                            },
+                            style: TextStyle(color: Colors.black),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Ingresa nombre de la tarea',
+                              hintStyle: TextStyle(color: Colors.grey),
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(height: 25),
                         Container(
-                            color: Colors.black,
-                            width:100,
-                            height: 35,
-                            child: Center(
-                              child: StreamBuilder<Object>(
-                                  stream: null,
-                                  builder: (context, snapshot) {
-                                    return Text('Guardar', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),);
-                                  }
+                          width: 400,
+                          padding: EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: Border.all(color: Colors.black)
+                          ),
+                          child: TextFormField(
+                            maxLines: 5,
+                            validator: (value){
+                              if(value == null || value.isEmpty){
+                                return 'Required Field';
+                              }
+                              return null;
+                            },
+                            style: TextStyle(color: Colors.black),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Ingresa la descripcion de la tarea',
+                              hintStyle: TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.of(context).pop();
+                              },
+                              child:   Container(
+                                  color: Colors.red,
+                                  width:100,
+                                  height: 35,
+                                  child: Center(
+                                    child: StreamBuilder<Object>(
+                                        stream: null,
+                                        builder: (context, snapshot) {
+                                          return Text('Cerrar', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),);
+                                        }
+                                    ),
+                                  )
                               ),
-                            )
+                            ),
+                            const SizedBox(width: 10),
+                            Container(
+                                color: Colors.black,
+                                width:100,
+                                height: 35,
+                                child: Center(
+                                  child: StreamBuilder<Object>(
+                                      stream: null,
+                                      builder: (context, snapshot) {
+                                        return Text('Guardar', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),);
+                                      }
+                                  ),
+                                )
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          )
-      );
-    },
+          ),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return ScaleTransition(
+          scale: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+          child: child,
+        );
+      }
   );
 }
+
